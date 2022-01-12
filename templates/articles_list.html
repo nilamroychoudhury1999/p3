@@ -1,0 +1,25 @@
+{% extends "home.html" %} {% block article_list %}
+<div class="container mt-5">
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4 mb-5 ">
+            <div class="card">
+                <img class="card-img-top " src="{{article.thumb.url}}" style="height: 230px; width:  286px;" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">{{article.title}}</h4>
+                    <p class="card-text">{{article.snippet}}</p>
+                    <h6>Author : {{article.author.username}}</h6>
+                    <hr>
+                    <div class="row mb-0">
+                        <div class="col-8">
+                            <p>Posted : {{article.date}}</p>
+                        </div>
+                        <div class="col"><a href="{% url 'app:detail' slug=article.id %}" class="btn btn-primary">Read More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock article_list %}
